@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ICEY BEAUTY STUDIO | Windsor Nails, Braids, Lashes & Beauty</title>
+  <meta name="description" content="Icey Beauty Studio in Windsor, Ontario offers luxury nails, braids, hairstyling, lashes, and beauty services. Book your appointment online today." />
+  <meta name="keywords" content="Windsor nail salon, Windsor braids, Windsor hairstylist, acrylic nails Windsor Ontario, gel nails Windsor, lashes Windsor, beauty salon Windsor, Icey Beauty Studio, piercing Windsor" />
+
+  <meta property="og:title" content="ICEY BEAUTY STUDIO | Luxury Beauty in Windsor" />
+  <meta property="og:description" content="Luxury nails, braids, lashes, piercing and beauty services in Windsor, Ontario. Book your appointment today." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="logo.png" />
+  <meta property="og:url" content="https://iceybeautystudio.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg: #070709;
+      --panel: rgba(255, 255, 255, 0.06);
+      --text: #ffffff;
+      --muted: #d6d6df;
+      --accent: #7ef7ff;
+      --accent-2: #ff7ad9;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+      --glow: 0 0 30px rgba(126, 247, 255, 0.25);
+      --radius: 18px;
+      --max-width: 1150px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: "Poppins", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,122,217,0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(126,247,255,0.1), transparent 30%),
+        linear-gradient(180deg, #050507 0%, #0b0b11 100%);
+    }
+
+    body.modal-open { overflow: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      margin-top: 0;
+    }
+
+    p { color: var(--muted); }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .section { padding: 95px 0; }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #081014;
+      background: linear-gradient(135deg, var(--accent), #b0fbff);
+      box-shadow: 0 0 24px rgba(126, 247, 255, 0.35);
+    }
+
+    .btn-primary:hover, .btn-primary:focus { transform: translateY(-2px); }
+
+    .btn-outline {
+      color: white;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1000;
+      background: rgba(4, 4, 7, 0.6);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrap {
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      mix-blend-mode: lighten;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      position: relative;
+      border-radius: 8px;
+      padding: 4px 2px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .nav-links a:hover, .nav-links a:focus { color: var(--accent); }
+
+    .nav-links a.active-link {
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(126, 247, 255, 0.45);
+    }
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      font-size: 1.2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 46px;
+      height: 46px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      cursor: pointer;
+      padding: 0;
+      z-index: 10;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+
+    .hamburger:hover, .hamburger:focus-visible { background: rgba(255,255,255,0.12); }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(rgba(7,7,10,0.55), rgba(7,7,10,0.75)),
+        url("herpicture.jpeg") center top/cover no-repeat;
+      background-color: #0a0a10;
+      padding: 140px 0 70px;
+      text-align: center;
+    }
+
+    .hero-card {
+      width: min(100%, 850px);
+      padding: 44px 28px;
+      border-radius: 28px;
+      background: rgba(8, 8, 12, 0.42);
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.98;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      font-size: 1.05rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .service-card {
+      padding: 26px 22px;
+      border-radius: var(--radius);
+      text-align: left;
+      color: white;
+      cursor: pointer;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      font: inherit;
+      font-size: 1rem;
+      -webkit-appearance: none;
+      appearance: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      font-size: 1.35rem;
+      background: linear-gradient(135deg, rgba(126,247,255,0.18), rgba(255,122,217,0.18));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .artist-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .artist-image {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .artist-image img { width: 100%; height: 100%; object-fit: cover; }
+    .artist-card { padding: 28px; border-radius: 22px; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .policy-box { padding: 34px; border-radius: 22px; }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .policy-item {
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-card { padding: 36px 24px; border-radius: 24px; text-align: center; }
+    .contact-top { display: grid; gap: 10px; margin-bottom: 24px; }
+
+    .contact-top a {
+      text-decoration: none;
+      font-weight: 600;
+      color: white;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .contact-social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .contact-social-icons a, .footer-socials a {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .footer-socials {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal.active { display: flex; opacity: 1; }
+
+    .modal-content {
+      margin: 40px auto;
+      width: min(100%, 500px);
+      max-height: none;
+      overflow-y: visible;
+      padding: 24px 20px 32px;
+      border-radius: 22px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(18,18,24,0.96), rgba(10,10,14,0.96));
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      text-align: center;
+      animation: modalSlideIn 0.3s ease;
+    }
+
+    @keyframes modalSlideIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      color: white;
+      background: rgba(255,255,255,0.12);
+      z-index: 10;
+      font-size: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .deposit-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      line-height: 1.7;
+    }
+
+    .payment-options {
+      margin-top: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .payment-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      cursor: pointer;
+      font-family: "Poppins", sans-serif;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .booking-form {
+      margin-top: 22px;
+      display: grid;
+      gap: 16px;
+      text-align: left;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .booking-form h3 {
+      margin-bottom: 0;
+      font-size: 1.05rem;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .booking-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: white;
+      font-family: "Poppins", sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .booking-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(126, 247, 255, 0.15);
+    }
+
+    .booking-input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .or-divider div {
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .or-divider span {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .float-buttons {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .float-btn {
+      padding: 13px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .text-btn {
+      background: linear-gradient(135deg, #ffe27c, #ffd24b);
+      color: #1e1800;
+    }
+
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #35d86c, #1fb357);
+      color: white;
+    }
+
+    footer {
+      padding: 36px 20px 46px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    button, a, .service-card, .modal-close, .payment-link, .float-btn, .social-icons a, .contact-social-icons a, .footer-socials a, .nav-links a {
+      -webkit-tap-highlight-color: rgba(126, 247, 255, 0.25);
+    }
+
+    button:active, a:active, .float-btn:active, .payment-link:active, .modal-close:active, .social-icons a:active, .contact-social-icons a:active, .footer-socials a:active, .nav-links a:active, .service-card:active {
+      transform: scale(0.97);
+    }
+
+    button:focus-visible, a:focus-visible, .service-card:focus-visible, .modal-close:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(126, 247, 255, 0.18);
+    }
+
+    .social-icons a:hover, .social-icons a:focus-visible, .contact-social-icons a:hover, .contact-social-icons a:focus-visible, .footer-socials a:hover, .footer-socials a:focus-visible {
+      transform: translateY(-2px) scale(1.08);
+      color: var(--accent);
+      box-shadow: var(--glow);
+      border-color: rgba(126, 247, 255, 0.35);
+    }
+
+    .btn:hover, .btn:focus-visible, .float-btn:hover, .float-btn:focus-visible, .payment-link:hover, .payment-link:focus-visible {
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.25), var(--shadow), var(--glow);
+    }
+
+    .btn.clicked, .float-btn.clicked, .payment-link.clicked, .social-icons a.clicked, .contact-social-icons a.clicked, .footer-socials a.clicked, .nav-links a.clicked, .modal-close.clicked {
+      transform: scale(0.96);
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.3), var(--glow);
+    }
+
+    .service-card:hover, .service-card:focus-visible {
+      transform: translateY(-7px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.4), var(--glow);
+      border-color: rgba(126,247,255,0.28);
+    }
+
+    .service-card.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(126, 247, 255, 0.45), 0 14px 36px rgba(0,0,0,0.4), var(--glow);
+    }
+
+    .modal-close:hover, .modal-close:focus-visible {
+      background: rgba(255,255,255,0.2);
+      box-shadow: var(--glow);
+    }
+
+    @media (hover: none) {
+      .btn:hover, .float-btn:hover, .payment-link:hover, .service-card:hover, .social-icons a:hover, .contact-social-icons a:hover, .footer-socials a:hover, .modal-close:hover, .nav-links a:hover {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+
+      .nav-wrap {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+        gap: 10px;
+        position: relative;
+      }
+
+      .brand {
+        width: auto;
+        justify-content: flex-start;
+        margin-left: 0;
+        padding-left: 0;
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 120px;
+        height: 120px;
+      }
+
+      .brand-logo img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .nav-right {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        padding: 28px 20px;
+        background: rgba(4, 4, 7, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-top: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        transform: translateY(-15px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .nav-right.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 16px;
+        border-radius: 12px;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      .nav-links a:hover, .nav-links a:focus { background: rgba(255,255,255,0.06); }
+      .nav-links a.active-link { background: rgba(126, 247, 255, 0.08); }
+
+      .social-icons {
+        justify-content: center;
+        margin-top: 10px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        width: 100%;
+      }
+
+      .artist-layout { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      .hero { padding-top: 130px; }
+      .float-buttons { right: 12px; bottom: 12px; }
+      .modal { padding: 10px; }
+      .modal-content { width: 100%; padding: 20px 16px 28px; margin: 20px auto; }
+      .brand-text strong { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 400px) {
+      .brand-text strong { font-size: 0.8rem; letter-spacing: 0.08em; }
+      .brand-text span { font-size: 0.5rem; letter-spacing: 0.15em; }
+      .brand-logo { width: 75px; height: 75px; }
+      .brand-logo img { width: 75px; height: 75px; }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Main Navigation">
+    <div class="container nav-wrap">
+      <a href="#" class="brand" aria-label="Icey Beauty Studio Home">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Icey Beauty Studio Logo" />
+        </div>
+        <div class="brand-text">
+          <strong>ICEY BEAUTY STUDIO</strong>
+          <span>Luxury Beauty &bull; Windsor</span>
+        </div>
+      </a>
+
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-right" id="navRight">
+        <div class="nav-links">
+          <a href="#" class="active-link">Home</a>
+          <a href="#artist">About</a>
+          <a href="#policy">Policies</a>
+          <a href="#services">Services</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-card">
+      <h1>Luxury Hair, Nails & Lashes</h1>
+      <p>Welcome to Icey Beauty Studio — where beauty meets style. Explore our services for nails, braids, weaving, lashes, piercing, and glam beauty.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary"><i class="fa-solid fa-star"></i> View Services</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="artist" class="section">
+      <div class="container">
+        <h2 class="section-title">Meet Your Artist</h2>
+        <p class="section-subtitle">The face behind Icey Beauty Studio — bringing beauty, precision, and creativity to every appointment.</p>
+        <div class="artist-layout">
+          <div class="artist-image">
+            <img src="herpicture.jpeg" alt="Artist at Icey Beauty Studio" loading="lazy">
+          </div>
+          <div class="artist-card glass">
+            <h3>Luxury beauty with care and precision</h3>
+            <p>At Icey Beauty Studio, every service is delivered with attention to detail, creativity, and a passion for helping clients look and feel their best.</p>
+            <p>From nails to braids and beauty services, each appointment is designed to leave you polished, confident, and camera-ready.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="policy" class="section">
+      <div class="container">
+        <h2 class="section-title">Booking Policies</h2>
+        <div class="policy-box glass">
+          <div class="policy-grid">
+            <div class="policy-item"><strong>$20 Deposit</strong><p>A $20 deposit is required to secure your appointment and is applied toward your service total.</p></div>
+            <div class="policy-item"><strong>Rescheduling</strong><p>Please provide at least 24 hours notice if you need to reschedule so your deposit can be transferred.</p></div>
+            <div class="policy-item"><strong>Late Arrivals</strong><p>Clients arriving more than 15 minutes late may need to reschedule.</p></div>
+            <div class="policy-item"><strong>No Shows</strong><p>Missed appointments without notice may require full payment before booking again.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Explore our beauty services designed to leave you feeling polished and confident.</p>
+        <div class="services-grid">
+          <button type="button" class="service-card" data-service="acrylic"><div class="service-icon"><i class="fa-solid fa-hand-sparkles"></i></div><h3>ACRYLIC</h3><p>Short, medium, long full sets and fill-ins.</p></button>
+          <button type="button" class="service-card" data-service="gel"><div class="service-icon"><i class="fa-solid fa-gem"></i></div><h3>GEL</h3><p>Gel manicure, clear manicure, and Gel-X sets.</p></button>
+          <button type="button" class="service-card" data-service="sew-in"><div class="service-icon"><i class="fa-solid fa-crown"></i></div><h3>SEW-IN</h3><p>Basic sew, closure sew-in, and quick weave styles.</p></button>
+          <button type="button" class="service-card" data-service="locs"><div class="service-icon"><i class="fa-solid fa-circle-nodes"></i></div><h3>LOCS</h3><p>Starter locs, retwists, and loc maintenance.</p></button>
+          <button type="button" class="service-card" data-service="twist"><div class="service-icon"><i class="fa-solid fa-scissors"></i></div><h3>TWIST</h3><p>Barrel twists, twists, and kinky twist styles.</p></button>
+          <button type="button" class="service-card" data-service="knotless"><div class="service-icon"><i class="fa-solid fa-link"></i></div><h3>KNOTLESS</h3><p>Small, medium, and large knotless braid options.</p></button>
+          <button type="button" class="service-card" data-service="boho"><div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>BOHO</h3><p>Small and medium boho braid styles with curly ends.</p></button>
+          <button type="button" class="service-card" data-service="piercing"><div class="service-icon"><i class="fa-solid fa-ring"></i></div><h3>PIERCING</h3><p>Ear and nose piercing with stainless steel jewelry.</p></button>
+          <button type="button" class="service-card" data-service="lashes"><div class="service-icon"><i class="fa-solid fa-eye"></i></div><h3>LASHES</h3><p>Classic, hybrid full sets and cluster lash sets.</p></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2 class="section-title">Our Work</h2>
+        <p class="section-subtitle">A look at recent styles, nails, braids, and beauty work from Icey Beauty Studio.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item"><img src="theworkimage1.jpeg" alt="Icey Beauty Studio work photo 1" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage2.jpeg" alt="Icey Beauty Studio work photo 2" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage3.jpeg" alt="Icey Beauty Studio work photo 3" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage4.jpeg" alt="Icey Beauty Studio work photo 4" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage5.jpeg" alt="Icey Beauty Studio work photo 5" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage6.jpeg" alt="Icey Beauty Studio work photo 6" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage7.jpeg" alt="Icey Beauty Studio work photo 7" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage8.jpeg" alt="Icey Beauty Studio beauty work sample 8" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage9.jpeg" alt="Icey Beauty Studio beauty work sample 9" loading="lazy"></div>
+          <div class="gallery-item"><img src="theworkimage10.jpeg" alt="Icey Beauty Studio beauty work sample 10" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Visit Icey Beauty Studio</h2>
+        <div class="contact-card glass">
+          <div class="contact-top">
+            <p><i class="fa-solid fa-location-dot"></i> Windsor, Ontario</p>
+            <p><a href="tel:12263409285"><i class="fa-solid fa-phone"></i> 226-340-9285</a></p>
+          </div>
+          <div class="contact-social-icons">
+            <a href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://wa.me/12263409285?text=Hi%20I%20would%20like%20to%20book%20an%20appointment%20with%20Icey%20Beauty%20Studio" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div id="footerYear"></div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/windsor_hairstyles_nailtech?igsh=MWM1Mm13aTUyOTByeA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.tiktok.com/@iceybeautystudio?_r=1&_t=ZS-94eC0AoOTtY" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <!-- SERVICE MODAL -->
+  <div id="serviceModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="serviceTitle" aria-describedby="serviceDesc">
+    <div class="modal-content">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+
+      <h2 id="serviceTitle"></h2>
+      <p id="serviceDesc"></p>
+
+      <div id="serviceStepOne">
+        <button type="button" class="btn btn-primary" id="continueToOptionsBtn"><i class="fa-solid fa-arrow-right"></i> Continue</button>
+      </div>
+
+      <div id="serviceStepTwo" style="display:none;">
+        <button type="button" class="btn btn-outline" id="backToStepOneBtn" style="margin-bottom:16px;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <div id="serviceOptions" class="payment-options"></div>
+      </div>
+
+      <div id="serviceStepThree" style="display:none;">
+        <button type="button" class="btn btn-outline" id="backToStepTwoBtn" style="margin-bottom:16px;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h3 id="selectedServiceOption" style="margin-bottom:14px;"></h3>
+        <div id="serviceAddOns" class="payment-options"></div>
+        <button type="button" class="btn btn-primary" id="continueToSummaryBtn" style="margin-top:18px;"><i class="fa-solid fa-arrow-right"></i> Continue</button>
+      </div>
+
+      <div id="serviceStepFour" style="display:none;">
+        <button type="button" class="btn btn-outline" id="backToStepThreeBtn" style="margin-bottom:16px;"><i class="fa-solid fa-arrow-left"></i> Back</button>
+        <h3 id="summaryServiceTitle" style="margin-bottom:10px;"></h3>
+        <p id="summaryServiceDesc"></p>
+
+        <div class="deposit-note">
+          <strong>Selected Add-ons</strong><br />
+          <span id="summaryAddOns">No add-ons selected.</span>
+          <br /><br />
+          <strong>Total Price:</strong><br />
+          <span id="summaryTotalPrice">CA$0.00</span>
+        </div>
+
+        <div class="booking-form">
+          <h3><i class="fa-solid fa-user"></i> Your Information</h3>
+          <div class="form-group">
+            <label for="bookingName">Full Name</label>
+            <input type="text" id="bookingName" class="booking-input" placeholder="e.g. Jane Doe" />
+          </div>
+          <div class="form-group">
+            <label for="bookingPhone">Phone Number</label>
+            <input type="tel" id="bookingPhone" class="booking-input" placeholder="e.g. 226-340-9285" />
+          </div>
+          <div class="form-group">
+            <label for="bookingEmail">Email Address</label>
+            <input type="email" id="bookingEmail" class="booking-input" placeholder="e.g. jane@email.com" />
+          </div>
+        </div>
+
+        <div class="deposit-note" style="margin-top:18px;">
+          <i class="fa-solid fa-shield-halved"></i> A <strong>$20 deposit</strong> is required to secure your appointment and is applied toward your service total. After payment, you'll be redirected to select your appointment time.
+        </div>
+
+        <div style="margin-top:22px;">
+          <h3 style="font-size:1rem;margin-bottom:14px;"><i class="fa-solid fa-wallet"></i> Choose Payment Method</h3>
+
+          <button type="button" class="btn btn-primary" id="payDepositBtn" style="width:100%;font-size:1.05rem;padding:16px 28px;">
+            <i class="fa-solid fa-credit-card"></i> Pay $20 Deposit with Card
+          </button>
+
+          <div class="or-divider">
+            <div></div>
+            <span>OR</span>
+            <div></div>
+          </div>
+
+          <div class="deposit-note" style="margin-top:0;text-align:left;">
+            <strong><i class="fa-solid fa-building-columns"></i> Pay via Interac e-Transfer</strong><br /><br />
+            Send <strong>$20.00 CAD</strong> to:<br />
+            <span style="color:var(--accent);font-weight:700;font-size:1.05rem;">omoseleesther113@gmail.com</span>
+            <br /><br />
+            <span style="font-size:0.85rem;">Include your <strong>full name</strong> in the e-Transfer message so we can match your payment.</span>
+          </div>
+
+          <button type="button" class="btn btn-outline" id="etransferPaidBtn" style="width:100%;margin-top:12px;padding:14px 28px;">
+            <i class="fa-solid fa-check-circle"></i> I've Sent My e-Transfer — Continue to Book
+          </button>
+        </div>
+
+        <p id="formError" style="color:#ff7ad9;font-size:0.85rem;margin-top:10px;display:none;text-align:center;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING BUTTONS -->
+  <div class="float-buttons">
+    <a href="sms:2263409285" class="float-btn text-btn"><i class="fa-solid fa-comment"></i> Text Us</a>
+    <a href="https://wa.me/12263409285?text=Hi%20I%20would%20like%20to%20book%20an%20appointment%20with%20Icey%20Beauty%20Studio" class="float-btn whatsapp-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+  </div>
+
+  <script>
+    var modal = document.getElementById("serviceModal");
+    var modalContent = document.querySelector(".modal-content");
+    var serviceTitle = document.getElementById("serviceTitle");
+    var serviceDesc = document.getElementById("serviceDesc");
+    var closeModalBtn = document.getElementById("closeModalBtn");
+    var serviceCards = document.querySelectorAll(".service-card");
+
+    var serviceStepOne = document.getElementById("serviceStepOne");
+    var serviceStepTwo = document.getElementById("serviceStepTwo");
+    var serviceStepThree = document.getElementById("serviceStepThree");
+    var serviceStepFour = document.getElementById("serviceStepFour");
+
+    var continueToOptionsBtn = document.getElementById("continueToOptionsBtn");
+    var continueToSummaryBtn = document.getElementById("continueToSummaryBtn");
+    var backToStepOneBtn = document.getElementById("backToStepOneBtn");
+    var backToStepTwoBtn = document.getElementById("backToStepTwoBtn");
+    var backToStepThreeBtn = document.getElementById("backToStepThreeBtn");
+
+    var serviceOptions = document.getElementById("serviceOptions");
+    var serviceAddOns = document.getElementById("serviceAddOns");
+
+    var selectedServiceOption = document.getElementById("selectedServiceOption");
+    var summaryServiceTitle = document.getElementById("summaryServiceTitle");
+    var summaryServiceDesc = document.getElementById("summaryServiceDesc");
+    var summaryAddOns = document.getElementById("summaryAddOns");
+    var summaryTotalPrice = document.getElementById("summaryTotalPrice");
+
+    var payDepositBtn = document.getElementById("payDepositBtn");
+    var etransferPaidBtn = document.getElementById("etransferPaidBtn");
+    var formError = document.getElementById("formError");
+    var bookingName = document.getElementById("bookingName");
+    var bookingPhone = document.getElementById("bookingPhone");
+    var bookingEmail = document.getElementById("bookingEmail");
+
+    var currentServiceKey = null;
+    var currentServiceOption = null;
+    var selectedAddOns = [];
+
+    var hamburgerBtn = document.getElementById("hamburgerBtn");
+    var navRight = document.getElementById("navRight");
+
+    function closeMenu() {
+      hamburgerBtn.classList.remove("active");
+      navRight.classList.remove("open");
+      hamburgerBtn.setAttribute("aria-expanded", "false");
+    }
+
+    hamburgerBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      var isOpen = navRight.classList.contains("open");
+      if (isOpen) { closeMenu(); }
+      else {
+        hamburgerBtn.classList.add("active");
+        navRight.classList.add("open");
+        hamburgerBtn.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    document.addEventListener("click", function(e) { if (!e.target.closest("nav")) closeMenu(); });
+    window.addEventListener("scroll", function() { closeMenu(); });
+
+    var commonAddOns = [
+      { title: "3D designs (Flowers, Sculpted art, etc.)", price: 20, desc: "+ 15 minutes @ CA$20.00" },
+      { title: "3d lines", price: 5, desc: "+ 10 minutes @ CA$5.00" },
+      { title: "Gel x Toes", price: 40, desc: "+ 1 hour 30 minutes @ CA$40.00" },
+      { title: "Chrome", price: 5, desc: "+ CA$5.00" },
+      { title: "Designed French tips (zebra, cheetah, ombré etc.)", price: 20, desc: "+ 30 minutes @ CA$20.00" },
+      { title: "Soak Off", price: 15, desc: "CA$15.00" }
+    ];
+
+    var serviceData = {
+      "acrylic": { title: "ACRYLIC", desc: "Choose your acrylic service, then continue to view available options.", options: [
+        { title: "Short Full Set @ CA$40.00", price: 40, desc: "A short acrylic full set (1-2) magnets. 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+        { title: "Medium Full Set @ CA$55.00", price: 55, desc: "A medium length full set (3-4 magnets). 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+        { title: "Long Full Set @ CA$70.00", price: 70, desc: "Long acrylic full set (5-6 magnets). 1-2 solid gel color polishes.", addOns: [].concat(commonAddOns) },
+        { title: "Fill-In @ CA$50.00", price: 50, desc: "An acrylic fill-in on your enhancements. This service is for nails that are LESS than 4 weeks old.", addOns: [].concat(commonAddOns) }
+      ]},
+      "gel": { title: "GEL", desc: "Choose your gel service, then continue to view available options.", options: [
+        { title: "Gel Manicure @ CA$30.00", price: 30, desc: "Selecting this service ensures a solid base color on your natural nail only.", addOns: [].concat(commonAddOns) },
+        { title: "Clear Manicure @ CA$25.00", price: 25, desc: "Selecting this option offers a cuticle and nail clean up with absolutely no color or designs, offering a clear clean up to your nails. Perfect for men and women.", addOns: [].concat(commonAddOns) },
+        { title: "Short Gel-X Set @ CA$40.00", price: 40, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel.", addOns: [].concat(commonAddOns) },
+        { title: "Medium Gel-X Set @ CA$55.00", price: 55, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel.", addOns: [].concat(commonAddOns) },
+        { title: "Long Gel-X Set", price: 0, desc: "Selecting this service ensures a solid base color and length only on a gel extension tip and a layer of builder gel.", addOns: [].concat(commonAddOns) }
+      ]},
+      "sew-in": { title: "SEW-IN", desc: "Choose your sew-in service, then continue to view available options.", options: [
+        { title: "Basic Sew @ CA$90.00", price: 90, desc: "Middle / side part. This service includes braiding down and styling. Must provide at least 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.", addOns: [] },
+        { title: "Closure Sew-In @ CA$120.00", price: 120, desc: "This service includes braiding down and styling. Must provide at least a closure with 3-4 bundles. Natural Hair must be washed and blown out. No products in hair.", addOns: [] },
+        { title: "Braids + Quick Weave @ CA$175.00", price: 175, desc: "Jayda style.", addOns: [] }
+      ]},
+      "locs": { title: "LOCS", desc: "Choose your loc service, then continue to view available options.", options: [
+        { title: "Starter Locs (Small) @ CA$250.00", price: 250, desc: "The price for small starter Locs starts at $250 and goes up based on the length of your hair.", addOns: [] },
+        { title: "Starter Locs (Medium) @ CA$180.00", price: 180, desc: "The price for medium starter Locs starts at $180 and goes up based on the length of your hair.", addOns: [] },
+        { title: "MicroLoc Retwist", price: 0, desc: "This method uses an interlocking tool. If you have over 200 locs, you will be charged an additional fee.", addOns: [] },
+        { title: "Loc Maintenance — Interlocking (1-75 Locs) @ CA$80.00", price: 80, desc: "If you need more than a basic retwist then you need to book a consultation.", addOns: [] },
+        { title: "Interlocking (75-100 Locs) @ CA$120.00", price: 120, desc: "If you need more than a basic retwist then you need to book a consultation.", addOns: [] },
+        { title: "Interlocking (100-130 Locs) @ CA$140.00", price: 140, desc: "If you need more than a basic retwist then you need to book a consultation.", addOns: [] }
+      ]},
+      "twist": { title: "TWIST", desc: "Choose your twist service, then continue to view available options.", options: [
+        { title: "Barrel Twists (Natural Hair, Not Locs)", price: 0, desc: "Hair must be washed & blow-dried. Price may vary depending on length & thickness of hair & desired style.", addOns: [] },
+        { title: "Twists (Natural Hair) @ CA$70.00", price: 70, desc: "Medium-sized. Hair must be washed & blow dried.", addOns: [] },
+        { title: "Kinky Twist @ CA$100.00", price: 100, desc: "Medium-sized hair must be washed and blow-dried.", addOns: [] }
+      ]},
+      "knotless": { title: "KNOTLESS", desc: "Choose your knotless braid service, then continue to view available options.", options: [
+        { title: "Small (Midback) @ CA$180.00", price: 180, desc: "Small knotless braids with midback length.", addOns: [] },
+        { title: "Medium (Midback) @ CA$130.00", price: 130, desc: "Medium knotless braids with midback length.", addOns: [] },
+        { title: "Medium (Waist Length) @ CA$150.00", price: 150, desc: "Medium knotless braids with waist length.", addOns: [] },
+        { title: "Medium (Butt Length) @ CA$180.00", price: 180, desc: "Medium knotless braids with butt length.", addOns: [] },
+        { title: "Large (Waist/Butt) @ CA$120.00", price: 120, desc: "Large knotless braids with waist/butt length.", addOns: [] }
+      ]},
+      "boho": { title: "BOHO", desc: "Choose your boho braid service, then continue to view available options.", options: [
+        { title: "Small (Midback) @ CA$250.00", price: 250, desc: "This style includes curly ends, with length up to the lower back.", addOns: [] },
+        { title: "Medium (Midback/Waist) @ CA$200.00", price: 200, desc: "This style includes curly ends, with length up to the lower back.", addOns: [] }
+      ]},
+      "piercing": { title: "PIERCING", desc: "Choose your piercing service, then continue to view available options.", options: [
+        { title: "Ear Piercing @ CA$25.00", price: 25, desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.", addOns: [] },
+        { title: "Nose Piercing @ CA$30.00", price: 30, desc: "30 minutes. This service includes stainless steel jewelry. A piercing gun is being used.", addOns: [] }
+      ]},
+      "lashes": { title: "LASHES", desc: "Choose your lash service, then continue to view available options.", options: [
+        { title: "Classic & Hybrid Full Set @ CA$40.00", price: 40, desc: "45 minutes. Classic and hybrid lash full set application.", addOns: [] },
+        { title: "All Cluster Sets @ CA$40.00", price: 40, desc: "Cluster lash set application. Starting at CA$40.00.", addOns: [] }
+      ]}
+    };
+
+    function clearSelectedCards() { serviceCards.forEach(function(card) { card.classList.remove("selected"); }); }
+    function scrollModalToTop() { modal.scrollTop = 0; modalContent.scrollTop = 0; }
+
+    function resetModalSteps() {
+      serviceStepOne.style.display = "block";
+      serviceStepTwo.style.display = "none";
+      serviceStepThree.style.display = "none";
+      serviceStepFour.style.display = "none";
+      serviceOptions.innerHTML = "";
+      serviceAddOns.innerHTML = "";
+      selectedServiceOption.textContent = "";
+      summaryServiceTitle.textContent = "";
+      summaryServiceDesc.textContent = "";
+      summaryAddOns.textContent = "No add-ons selected.";
+      summaryTotalPrice.textContent = "CA$0.00";
+      currentServiceOption = null;
+      selectedAddOns = [];
+      bookingName.value = "";
+      bookingPhone.value = "";
+      bookingEmail.value = "";
+      formError.style.display = "none";
+      scrollModalToTop();
+    }
+
+    function formatPrice(price) { return price > 0 ? "CA$" + price.toFixed(2) : "Price varies"; }
+
+    function openService(card, serviceKey) {
+      var service = serviceData[serviceKey];
+      if (!service) return;
+      clearSelectedCards();
+      card.classList.add("selected");
+      currentServiceKey = serviceKey;
+      resetModalSteps();
+      serviceTitle.textContent = service.title;
+      serviceDesc.textContent = service.desc;
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-open");
+      setTimeout(function() { closeModalBtn.focus(); }, 100);
+    }
+
+    function showOptions() {
+      if (!currentServiceKey) return;
+      var service = serviceData[currentServiceKey];
+      serviceOptions.innerHTML = "";
+      service.options.forEach(function(option) {
+        var optionBtn = document.createElement("button");
+        optionBtn.type = "button";
+        optionBtn.className = "payment-link";
+        optionBtn.innerHTML = '<i class="fa-solid fa-check"></i> ' + option.title;
+        optionBtn.addEventListener("click", function() {
+          currentServiceOption = option;
+          selectedAddOns = [];
+          selectedServiceOption.textContent = option.title;
+          renderAddOns();
+          serviceStepTwo.style.display = "none";
+          serviceStepThree.style.display = "block";
+          scrollModalToTop();
+        });
+        serviceOptions.appendChild(optionBtn);
+      });
+      serviceStepOne.style.display = "none";
+      serviceStepTwo.style.display = "block";
+      scrollModalToTop();
+    }
+
+    function renderAddOns() {
+      serviceAddOns.innerHTML = "";
+      if (!currentServiceOption || !currentServiceOption.addOns || currentServiceOption.addOns.length === 0) {
+        var emptyNote = document.createElement("div");
+        emptyNote.className = "deposit-note";
+        emptyNote.innerHTML = "No add-ons available for this service.";
+        serviceAddOns.appendChild(emptyNote);
+        return;
+      }
+      currentServiceOption.addOns.forEach(function(addOn, index) {
+        var label = document.createElement("label");
+        label.className = "payment-link";
+        label.style.cursor = "pointer";
+        label.style.textAlign = "left";
+        label.innerHTML = '<input type="checkbox" data-addon-index="' + index + '" style="margin-right:8px;"><span><strong>' + addOn.title + '</strong><br><small>' + addOn.desc + '</small></span>';
+        var checkbox = label.querySelector("input");
+        checkbox.addEventListener("change", function(e) {
+          if (e.target.checked) { selectedAddOns.push(addOn); }
+          else { selectedAddOns = selectedAddOns.filter(function(item) { return item.title !== addOn.title; }); }
+        });
+        serviceAddOns.appendChild(label);
+      });
+    }
+
+    function showSummary() {
+      if (!currentServiceOption) return;
+      var basePrice = currentServiceOption.price || 0;
+      var addOnTotal = selectedAddOns.reduce(function(sum, item) { return sum + (item.price || 0); }, 0);
+      var total = basePrice + addOnTotal;
+      summaryServiceTitle.textContent = currentServiceOption.title;
+      summaryServiceDesc.textContent = currentServiceOption.desc;
+      if (selectedAddOns.length > 0) {
+        summaryAddOns.innerHTML = selectedAddOns.map(function(item) { return item.title + " (" + formatPrice(item.price || 0) + ")"; }).join("<br>");
+      } else { summaryAddOns.textContent = "No add-ons selected."; }
+      summaryTotalPrice.textContent = formatPrice(total);
+      serviceStepThree.style.display = "none";
+      serviceStepFour.style.display = "block";
+      scrollModalToTop();
+    }
+
+    function goToStepOne() { serviceStepOne.style.display = "block"; serviceStepTwo.style.display = "none"; serviceStepThree.style.display = "none"; serviceStepFour.style.display = "none"; scrollModalToTop(); }
+    function goToStepTwo() { serviceStepOne.style.display = "none"; serviceStepTwo.style.display = "block"; serviceStepThree.style.display = "none"; serviceStepFour.style.display = "none"; scrollModalToTop(); }
+    function goToStepThree() { serviceStepOne.style.display = "none"; serviceStepTwo.style.display = "none"; serviceStepThree.style.display = "block"; serviceStepFour.style.display = "none"; scrollModalToTop(); }
+
+    function closeService() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      clearSelectedCards();
+      resetModalSteps();
+      currentServiceKey = null;
+    }
+
+    function validateForm() {
+      var name = bookingName.value.trim();
+      var phone = bookingPhone.value.trim();
+      var email = bookingEmail.value.trim();
+      if (!name) { formError.textContent = "Please enter your full name."; formError.style.display = "block"; bookingName.focus(); return false; }
+      if (!phone) { formError.textContent = "Please enter your phone number."; formError.style.display = "block"; bookingPhone.focus(); return false; }
+      if (!email || email.indexOf("@") === -1 || email.indexOf(".") === -1) { formError.textContent = "Please enter a valid email address."; formError.style.display = "block"; bookingEmail.focus(); return false; }
+      formError.style.display = "none";
+      return true;
+    }
+
+    function saveBookingData() {
+      var bookingData = {
+        name: bookingName.value.trim(),
+        phone: bookingPhone.value.trim(),
+        email: bookingEmail.value.trim(),
+        service: currentServiceKey ? serviceData[currentServiceKey].title : "",
+        option: currentServiceOption ? currentServiceOption.title : "",
+        optionDesc: currentServiceOption ? currentServiceOption.desc : "",
+        addOns: selectedAddOns.map(function(a) { return a.title + " (" + formatPrice(a.price || 0) + ")"; }),
+        total: summaryTotalPrice.textContent
+      };
+      localStorage.setItem("iceyBooking", JSON.stringify(bookingData));
+    }
+
+    payDepositBtn.addEventListener("click", function() {
+      if (!validateForm()) return;
+      saveBookingData();
+      window.location.href = "https://buy.stripe.com/cNi5kE4IDgQt3MRd495os00";
+    });
+
+    etransferPaidBtn.addEventListener("click", function() {
+      if (!validateForm()) return;
+      var confirmed = confirm("Please confirm: Have you already sent the $20 e-Transfer to omoseleesther113@gmail.com?\n\nClick OK if you have sent it.\nClick Cancel if you haven't sent it yet.");
+      if (confirmed) {
+        saveBookingData();
+        window.location.href = "success.html";
+      }
+    });
+
+    closeModalBtn.addEventListener("click", closeService);
+    continueToOptionsBtn.addEventListener("click", showOptions);
+    continueToSummaryBtn.addEventListener("click", showSummary);
+    backToStepOneBtn.addEventListener("click", goToStepOne);
+    backToStepTwoBtn.addEventListener("click", goToStepTwo);
+    backToStepThreeBtn.addEventListener("click", goToStepThree);
+
+    serviceCards.forEach(function(card) { card.addEventListener("click", function() { openService(card, card.dataset.service); }); });
+
+    modal.addEventListener("click", function(e) { if (e.target === modal) closeService(); });
+    document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeService(); });
+
+    modal.addEventListener("keydown", function(e) {
+      if (e.key !== "Tab") return;
+      var focusable = modal.querySelectorAll('button:not([disabled]), a[href], input, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+      var first = focusable[0]; var last = focusable[focusable.length - 1];
+      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+      else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+    });
+
+    document.getElementById("footerYear").textContent = "\u00A9 " + new Date().getFullYear() + " ICEY BEAUTY STUDIO. All rights reserved.";
+
+    document.addEventListener("click", function(e) {
+      var el = e.target.closest('a, button, .service-card, .modal-close, .payment-link, .float-btn');
+      if (el) { el.classList.add("clicked"); setTimeout(function() { el.classList.remove("clicked"); }, 180); }
+    });
+
+    var navLinks = document.querySelectorAll(".nav-links a");
+    navLinks.forEach(function(link) {
+      link.addEventListener("click", function() {
+        navLinks.forEach(function(item) { item.classList.remove("active-link"); });
+        link.classList.add("active-link");
+        closeMenu();
+      });
+    });
+  </script>
+</body>
+</html>
